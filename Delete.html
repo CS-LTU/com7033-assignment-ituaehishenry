@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Patient's Data</title>
+</head>
+  <h1>About National Stroke Insurance</h1>
+<img src="Assets/Logo4.png" alt="NSI Logo" width="50">
+ </body>   
+<nav>
+  <a href="login.html">Login</a> 
+  
+</nav>
+  <div class="delete-container">
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want your record to be deleted?</p>
+        <div class="button-group">
+            <form action="/delete_patient/{{ patient_id }}" method="POST" style="display: inline;">
+                <button type="submit" class="delete-btn">Yes, Delete</button>
+            </form>
+            <a href="/view_patients" class="cancel-btn">Cancel</a>
+        </div>
+</div>
+
+<footer>
+        <p>&copy; 2025 National Stroke Insurance WebApp. All rights reserved.</p>
+    </footer>
+</body>
+</html>
