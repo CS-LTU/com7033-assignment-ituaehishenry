@@ -4,9 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Patient</title>
-    </head>
+ <style>
+    /* The body of the web page is being styled with the code*/
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #b5a6b5;
+            margin: 0;
+            padding: 0;
+             /* The header(the upper part of the body of the web page) 
+        of the web page is being styled with the code*/
+        
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            padding: 12px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .form-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .form-footer a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+         footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 0.9rem;
+
+            footer {
+            margin: 0;
+         }
+       
+       
+        }
+   /*Responsive design style to match buttons  and container with screen size of different devices*/
+       @media (max-width: 600px) {
+            button {
+                flex: 1 1 100%;
+                max-width: 100%;
+          }
+        }    
+ </style>
+ </head>
 <body>
-    <img src="Assets/Logo4.png" alt="National Stroke Insurance" width="100">
+
+   <header><h1>Welcome to National Stroke Insurance</h1>
+           <img src="Assets/Logo4.png" alt="National Stroke Insurance" width="100">
+   </header>
     <div class="form-container">
         <h1>Update Patient</h1>
         <form action="/update_patient/{{ patient_id }}" method="POST">
