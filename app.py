@@ -1,13 +1,28 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, flash
+
+# To automate the webbrowser the webbrowser is imported below.
 import webbrowser
+#Threading allows multple running of tasks at the same time.
 from threading import Thread
 import time
 
 app = Flask(__name__)
-
+ # Starting with route for the home page
 @app.route('/')
 def home():
-    return "Hello, Henry. This is a flask library"
+    return render_template("index.html")
+
+# Route for the about page
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+# Route for the about page
+@app.route('/help')
+def Support():
+    return render_template("help.html")
+
+
 
 def run_flask():
     app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
