@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Patients</title>
+    <style>
+    /* The body of the web page is being styled with the code*/
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #b5a6b5;
+            margin: 0;
+            padding: 0;
+            
+            
+            
+            
+
+        }    
+         /* The header(the upper part of the body of the web page) 
+        of the web page is being styled with the code*/
+        
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+         h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #0056b3;
+        }
+
+        .table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f6f8;
+            font-size: 16px;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .add-patient-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .add-patient-btn:hover {
+            background-color: #218838;
+        }
+
+        .actions a {
+            margin-right: 10px;
+        }
+
+        .actions a.delete {
+            color: #dc3545;
+        }
+
+        .actions a.delete:hover {
+            color: #a71d2a;
+        }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 0.9rem;
+
+            footer {
+            margin: 0;
+         }
+       
+       
+        }
+   /*Responsive design style to match buttons  and container with screen size of different devices*/
+       @media (max-width: 600px) {
+            button {
+                flex: 1 1 100%;
+                max-width: 100%;
+          }
+        }    
+
+    </style>    
+</head>
+   
+<body>
+    <header>
+    <h1>Welcome to National Stroke Insurance</h1>
+    <img src="/static/Assets/Logo4.png" alt="National Stroke Insurance" width="100">
+    </header>
+    <div class="table-container"> </div>
+        <h1>Patient Records</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Hypertension</th>
+                <th>Heart Disease</th>
+                <th>Avg Glucose</th>
+                <th>BMI</th>
+                <th>Stroke</th>
+                <th>Actions</th>
+            </tr>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient_id }}</td>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.gender }}</td>
+                <td>{{ patient.hypertension }}</td>
+                <td>{{ patient.heart_disease }}</td>
+                <td>{{ patient.avg_glucose_level }}</td>
+                <td>{{ patient.bmi }}</td>
+                <td>{{ patient.stroke }}</td>
+                <td class="actions">
+                    <a href="/update_patient/{{ patient._id }}">Update</a>
+                    <a href="/delete_patient/{{ patient._id }}" class="delete" 
+                       onclick="return confirm('Are you sure you want to delete this patient?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/add_patient" class="add-patient-btn">Add New Patient</a>
+        <a href="/logout" style="margin-left: 10px; background-color: #6c757d;" class="add-patient-btn">
+            Logout</a>
+
+    </div>
+    <footer>
+       <p>&copy; 2025 National Stroke Insurance WebApp. Patient Management System. All rights reserved.
+    </footer>
+</body>
+</html>

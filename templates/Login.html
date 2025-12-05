@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   <style>/* The body of the web page is being styled with the code*/
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #b5a6b5;
+            margin: 0;
+            padding: 0;
+             /* The header(the upper part of the body of the web page) 
+        of the web page is being styled with the code*/
+        
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .login-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 30px auto;
+        }
+          .login-container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container input {
+            font-size: 16px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .login-container input:focus {
+            border-color: #007bff;
+        }
+
+        .login-container button {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .login-container p {
+            font-size: 14px;
+            color: #666666;
+            margin-top: 15px;
+        }
+
+        .login-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 0.9rem;
+
+            footer {
+            margin: 0;
+         }
+       
+       
+        }
+   /*Responsive design style to match buttons  and container with screen size of different devices*/
+       @media (max-width: 600px) {
+            button {
+                flex: 1 1 100%;
+                max-width: 100%;
+          }
+        }    
+</style> 
+</head> 
+<body>
+    <header><h1>Welcome to National Stroke Insurance</h1>
+       
+    <img src="/static/Assets/Logo4.png" alt="NSI Logo" width="50">
+    </header>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p> Don't have an account? 
+         <a href="/register">Register here</a></p>
+       
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <footer>
+        <p>&copy; 2025 National Stroke Insurance Web Application. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

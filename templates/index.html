@@ -1,0 +1,223 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>National Stroke Insurance </title>
+
+  <style>
+    /* The body of the web page is being styled with the code*/
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #b5a6b5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        /* The header(the upper part of the body of the web page) 
+        of the web page is being styled with the code*/
+        
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }   
+        /* Navigation Styles this section covers styles the entire body of the nav,
+         the butto and the hovering the nav butto */
+         nav {
+            background: White;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .nav-button {
+            color: #000000;
+            text-decoration: none;
+            padding: 6px 10px;
+            margin: 0 10px;
+            background: greenyellow;
+            border-radius: 5px;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 2px solid #2980b9;
+        }
+    
+        .nav-button:hover {
+            background: #abb4bb;
+            color: rgb(138, 123, 123); 
+        }     
+             .container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        border-left: 6px solid #00412e;
+        }  
+         .container .centered-text {
+        color: #333;
+        font-size: 1.2em;
+        text-align: center;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        }
+
+        /* styling the image and its position */
+
+        .full-width {
+           width: 50vw;
+           position: relative;
+           left: 70%;
+           right: 70%;
+           margin-left: -50vw;
+           margin-right: -50vw;
+        }  
+        main {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+     /* The main part that allows patience and admin to get register and 
+     get access to the database is styled*/
+        main h2 {
+            color: brown;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .btn {
+            flex: 1 1 48%;
+            max-width: 48%;
+            padding: 15px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: green;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: blue;
+        }
+
+        .btn-secondary:hover {
+            background-color: greenyellow;
+        }
+
+         /* footer Styles */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 0.9rem;
+
+            footer {
+            margin: 0;
+         }
+       
+       
+        }
+   /*Responsive design style to match buttons  and container with screen size of different devices*/
+       @media (max-width: 600px) {
+            .btn {
+                flex: 1 1 100%;
+                max-width: 100%;
+          }
+        }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to National Stroke Insurance</h1>
+    <img src="/static/Assets/Logo4.png" alt="National Stroke Insurance" width="100">
+
+  </header>
+
+  <nav>
+   {% if user_fullname %}
+    <p style="text-align: right; padding: 10px; background-color: red">
+        Logged in as: <strong>{{ user_fullname }}</strong>
+        <a href="{{ url_for('let_logout') }}" style="margin-left: 20px;">Logout</a>
+    </p>
+   {% endif %}
+    <a href="/" class="nav-button">Home</a> |
+    <a href="/about" class="nav-button">About Us</a> |
+   <a href="/help" class="nav-button">Help and Support</a>
+   {% if session.get('role') == 'admin' %}
+    | <a href="/admin/dashboard" class="nav-button">Admin Dashboard</a>
+    {% endif %} 
+  </nav>
+  
+
+  <div class="container">
+      <p class="centered-text">This is a web app where people with stroke <br> or  
+    other health releted issues that can lead to 
+    <br>stroke  are supported with advice, treatment <br> 
+       and  management of their state of health.</p>
+   </div>
+  
+   <img src="/static/Assets/Logo2.png" class = " full-width">
+   <div>
+   <main>
+
+    <h2>User Management</h2>
+        
+       <div class="btn-container">
+         <a href="/register" class="btn">Register</a>
+         <a href="/login" class="btn btn-secondary">Login</a>
+       </div>
+    <h2>Patient Management</h2>
+        <div class="btn-container">
+            <a href="/add_patient" class="btn">Add New Patient</a> 
+            <a href="/view_patients" class="btn btn-secondary">View All Patients</a>
+            
+        </div>
+        {% if session.get('role') == 'admin' %}
+    <h2>Admin Management</h2>
+     <div class="btn-container">
+     <a href="/admin/dashboard" class="btn" style="background-color: #dc3545;">Admin Dashboard</a>
+     </div>
+      {% endif %}
+        
+
+    </main>    
+  <footer>
+        <p>&copy; 2025 National Stroke Insurance Web Application. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>  
+        

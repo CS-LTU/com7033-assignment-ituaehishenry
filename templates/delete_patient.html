@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Patient's Data</title>
+   <style>
+    /* The body of the web page is being styled with the code*/
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #b5a6b5;
+            margin: 0;
+            padding: 0;
+             /* The header(the upper part of the body of the web page) 
+        of the web page is being styled with the code*/
+        
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+          nav {
+             display: grid;
+             place-items: center; 
+             padding: 15px;
+            background: brown;
+        }
+        .nav-button {
+            color: #000000;
+            text-decoration: none;
+            padding: 6px 10px;
+            margin: 0 10px;
+            background: greenyellow;
+            border-radius: 5px;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 2px solid #2980b9;
+        }
+    
+        .nav-button:hover {
+            background: #abb4bb;
+            color: rgb(138, 123, 123); 
+        }     
+             .container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        border-left: 6px solid #00412e;
+        }    
+       
+     .delete-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button, a {
+            padding: 12px 15px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        button.delete-btn {
+            background-color: #e74c3c;
+        }
+
+        button.delete-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        a.cancel-btn {
+            background-color: hsl(141, 87%, 44%);
+        }
+
+        a.cancel-btn:hover {
+            background-color: #5a6a72;
+            transform: translateY(-2px);
+        }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 0.9rem;
+
+            footer {
+            margin: 0;
+         }
+       
+       
+        }
+   /*Responsive design style to match buttons  and container with screen size of different
+    devices*/
+       @media (max-width: 600px) {
+            button {
+                flex: 1 1 100%;
+                max-width: 100%;
+          }
+        }
+    </style> 
+</head>
+ <header> <h1>About National Stroke Insurance</h1>
+  <img src="/static/Assets/Logo4.png" alt="NSI Logo" width="50">
+ </header>
+</body>   
+  <nav>
+   <a href="/login" class="nav-button">Login</a> 
+   </nav>
+  <div class="delete-container">
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want your record to be deleted?</p>
+        <div class="button-group">
+            <form action="/delete_patient/{{ patient_id }}" method="POST" style="display: inline;">
+                <button type="submit" class="delete-btn">Yes, Delete</button>
+            </form>
+            <a href="/view_patients" class="cancel-btn">Cancel</a>
+        </div>
+  </div>
+
+<footer>
+        <p>&copy; 2025 National Stroke Insurance WebApp. All rights reserved.</p>
+    </footer>
+</body>
+</html>
